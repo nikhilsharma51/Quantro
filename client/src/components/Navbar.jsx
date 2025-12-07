@@ -3,8 +3,15 @@ import { Link } from "react-router-dom";
 import logo from "../assets/Q.jpg";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChartLine } from "@fortawesome/free-solid-svg-icons";
+import { useNavigate } from 'react-router-dom';
 
 const Navbar = () => {
+  
+   const navigate = useNavigate();
+  const handleGetStarted = () => {
+    navigate('/login');
+  }
+
   return (
     <nav className="w-full flex justify-between items-center py-4 px-8 bg-[#0f1624]">
       {/* Logo */}
@@ -23,10 +30,10 @@ const Navbar = () => {
 
       {/* Auth Buttons */}
       <div className="flex items-center gap-4">
-        <button className="text-gray-300 hover:text-white font-medium transition">
+        <button onClick={handleGetStarted} className="text-gray-300 hover:text-white font-medium transition">
           Login
         </button>
-        <button className="bg-[#3b82f6] hover:bg-[#2563eb] text-white px-5 py-2 rounded-full font-medium transition">
+        <button onClick={handleGetStarted} className="bg-primary hover:bg-[#2563eb] text-white px-5 py-2 rounded-full font-medium transition">
           Get Started
         </button>
       </div>

@@ -1,6 +1,13 @@
 import React from 'react'
+import { useNavigate } from 'react-router-dom'
 
 const Footer = () => {
+
+  const navigate = useNavigate();
+  const handleGetStarted = () => {
+    navigate('/login');
+  }
+  
   return (
     <footer className="w-full text-gray-300 py-5 px-6 ">
       <div className="max-w-6xl mx-5 grid grid-cols-1 md:grid-cols-3 gap-8 items-start">
@@ -34,7 +41,7 @@ const Footer = () => {
         {/* Right - CTA / Copyright */}
         <div className="flex flex-col items-start md:items-end gap-4">
           <div className="flex items-center gap-3">
-            <a href="#" className="bg-[#3b82f6] hover:bg-[#2563eb] text-white px-4 py-2 rounded-full text-sm font-semibold">Get Started</a>
+            <a onClick={handleGetStarted} href="#" className="bg-[#3b82f6] hover:bg-[#2563eb] text-white px-4 py-2 rounded-full text-sm font-semibold">Get Started</a>
           </div>
           <div className="text-sm text-gray-400">&copy; {new Date().getFullYear()} Quantro. All rights reserved.</div>
         </div>

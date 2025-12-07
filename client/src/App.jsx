@@ -5,6 +5,7 @@ import Landing from './pages/Landing'
 import Dashboard from './pages/Dashboard'
 import Footer from './components/Footer'
 import Login from './pages/Login'
+import Account from './pages/Account'
 import { useLocation } from 'react-router-dom'
 
 
@@ -19,6 +20,7 @@ const App = () => {
       <Routes>
         <Route path = '/' element = {<Landing/>}/>
         <Route path = '/dashboard' element = {<Dashboard/>}/>
+        <Route path = '/account' element = {<Account/>}/>
         <Route path = "/login" element = {<Login/>}/>
         {/* <Route path = '/profile' element = {<Profile/>}/> */}
       </Routes>

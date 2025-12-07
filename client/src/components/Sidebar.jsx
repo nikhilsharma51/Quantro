@@ -145,14 +145,15 @@ const Sidebar = () => {
               {!collapsed && <span className="text-sm font-medium">Calendar</span>}
             </a>
           </li>
-          <li onClick={() =>{navigate('/settings')}}>
+          <li onClick={() =>{navigate('/account')}}>
             <a
-              href="/settings"
+              href="#"
+              onClick={(e) => e.preventDefault()}
               className="flex items-center gap-3 rounded px-3 py-2 hover:bg-white/6"
-              title="settings"
+              title="Account"
             >
               <FiSettings className="w-5 h-5 text-gray-200" />
-              {!collapsed && <span className="text-sm font-medium">Settings</span>}
+              {!collapsed && <span className="text-sm font-medium">Account</span>}
             </a>
           </li>
         </ul>

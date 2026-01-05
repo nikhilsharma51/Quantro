@@ -8,6 +8,8 @@ import DBconnect from "./config/DBconfig.js";
 configDotenv();
 const app = express();
 
+// core middleware
+app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 DBconnect();
@@ -20,16 +22,8 @@ app.use(
   })
 );
 
-
-
-// routes
+// auth routes
 app.use("/api/auth", authRoutes);
-
-
-import { protect } from "./middlewares/authMiddleware.js";
-app.get("/api/auth/me", protect, (req, res) => {
-  res.json({ userId: req.user.userId });
-});
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {

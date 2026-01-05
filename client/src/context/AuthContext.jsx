@@ -25,7 +25,13 @@ export const AuthProvider = ({ children }) => {
 
   const login = async (credentials) => {
     const { data } = await api.post('/auth/login', credentials); // server sets httpOnly cookie
-    setUser(data); // server may return user object
+    setUser(data); // server returns user object
+    return data;
+  };
+
+  const signup = async (payload) => {
+    const { data } = await api.post('/auth/signup', payload); // also sets cookie
+    setUser(data);
     return data;
   };
 
@@ -36,7 +42,17 @@ export const AuthProvider = ({ children }) => {
   };
 
   return (
-    <AuthContext.Provider value={{ user, setUser, loading, login, logout, isAuthenticated: !!user }}>
+    <AuthContext.Provider
+      value={{
+        user,
+        setUser,
+        loading,
+        login,
+        signup,
+        logout,
+        isAuthenticated: !!user,
+      }}
+    >
       {children}
     </AuthContext.Provider>
   );

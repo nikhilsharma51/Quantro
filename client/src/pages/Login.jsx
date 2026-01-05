@@ -1,16 +1,24 @@
-import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
+import { useAuth } from "../context/AuthContext";
 
-const Login = () => {
+const Login = ({ initialMode = "signup" }) => {
   const navigate = useNavigate();
+  const location = useLocation();
+  const { login, signup } = useAuth();
 
-  const [mode, setMode] = useState("signup"); // 'signup' or 'login'
+  const [mode, setMode] = useState(initialMode); // 'signup' or 'login'
   const [fullname, setFullname] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirm, setConfirm] = useState("");
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
+
+  // keep internal mode in sync if route passes different initialMode
+  useEffect(() => {
+    setMode(initialMode);
+  }, [initialMode]);
 
   const resetErrors = () => setError("");
 
@@ -35,11 +43,22 @@ const Login = () => {
     setLoading(true);
     setError("");
     try {
-      // TODO: replace with real API call
-      await new Promise((r) => setTimeout(r, 700));
-      navigate("/dashboard");
+      const redirectTo =
+        location.state?.from?.pathname && location.state.from.pathname !== "/login"
+          ? location.state.from.pathname
+          : "/dashboard";
+
+      if (mode === "signup") {
+        await signup({ fullname, email, password });
+      } else {
+        await login({ email, password });
+      }
+
+      navigate(redirectTo, { replace: true });
     } catch (err) {
-      setError("Something went wrong. Please try again.");
+      const message =
+        err?.response?.data?.message || "Something went wrong. Please try again.";
+      setError(message);
     } finally {
       setLoading(false);
     }

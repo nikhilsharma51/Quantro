@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { FiHome, FiBarChart2, FiCalendar, FiEdit3, FiPlusSquare , FiSettings } from 'react-icons/fi'
-import { isCookie, useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 
 const rupee = (v) => `₹${v}`
 
@@ -113,48 +113,52 @@ const Sidebar = () => {
       {/* Navigation */}
       <nav id="sidebar-nav" className="mt-6 px-2 flex-1 overflow-auto" role="navigation" aria-label="Primary">
         <ul className="space-y-1">
-          <li onClick={() =>{navigate('/dashboard')}}>
-            <a
-              href="/dashboard"
-              className="flex items-center gap-3 rounded px-3 py-2 hover:bg-white/6"
+          <li>
+            <button
+              type="button"
+              onClick={() => navigate('/dashboard')}
+              className="w-full flex items-center gap-3 rounded px-3 py-2 hover:bg-white/6 text-left"
               title="Dashboard"
             >
               <FiHome className="w-5 h-5 text-gray-200" />
               {!collapsed && <span className="text-sm font-medium">Dashboard</span>}
-            </a>
+            </button>
           </li>
 
-          <li onClick={() =>{navigate('/stats')}}>
-            <a
-              href="/stats"
-              className="flex items-center gap-3 rounded px-3 py-2 hover:bg-white/6"
+          <li>
+            <button
+              type="button"
+              onClick={() => navigate('/stats')}
+              className="w-full flex items-center gap-3 rounded px-3 py-2 hover:bg-white/6 text-left"
               title="Stats"
             >
               <FiBarChart2 className="w-5 h-5 text-gray-200" />
               {!collapsed && <span className="text-sm font-medium">Stats</span>}
-            </a>
+            </button>
           </li>
 
-          <li onClick={() =>{navigate('/calendar')}}>
-            <a
-              href="/calendar"
-              className="flex items-center gap-3 rounded px-3 py-2 hover:bg-white/6"
+          <li>
+            <button
+              type="button"
+              onClick={() => navigate('/calendar')}
+              className="w-full flex items-center gap-3 rounded px-3 py-2 hover:bg-white/6 text-left"
               title="Calendar"
             >
               <FiCalendar className="w-5 h-5 text-gray-200" />
               {!collapsed && <span className="text-sm font-medium">Calendar</span>}
-            </a>
+            </button>
           </li>
-          <li onClick={() =>{navigate('/account')}}>
-            <a
-              href="#"
-              onClick={(e) => e.preventDefault()}
-              className="flex items-center gap-3 rounded px-3 py-2 hover:bg-white/6"
+
+          <li>
+            <button
+              type="button"
+              onClick={() => navigate('/account')}
+              className="w-full flex items-center gap-3 rounded px-3 py-2 hover:bg-white/6 text-left"
               title="Account"
             >
               <FiSettings className="w-5 h-5 text-gray-200" />
               {!collapsed && <span className="text-sm font-medium">Account</span>}
-            </a>
+            </button>
           </li>
         </ul>
 

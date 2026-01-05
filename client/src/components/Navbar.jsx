@@ -1,13 +1,14 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import logo from "../assets/Q.jpg";
+import { useAuth } from "../context/AuthContext";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChartLine } from "@fortawesome/free-solid-svg-icons";
 import { useNavigate } from 'react-router-dom';
 
+
 const Navbar = () => {
-  
-   const navigate = useNavigate();
+  const { isAuthenticated, user } = useAuth();
+  const navigate = useNavigate();
   const handleGetStarted = () => {
     navigate('/login');
   }
@@ -22,7 +23,7 @@ const Navbar = () => {
 
       {/* Links */}
       <div className="hidden md:flex items-center gap-8 text-gray-300 font-medium">
-        <a href="#" className="hover:text-white transition">Home</a>
+        <a href="/dashboard" className="hover:text-white transition">Home</a>
         {/* <a href="#" className="hover:text-white transition">Features</a> */}
         <a href="#" className="hover:text-white transition">Pricing</a>
         <a href="#" className="hover:text-white transition">About</a>
@@ -30,12 +31,14 @@ const Navbar = () => {
 
       {/* Auth Buttons */}
       <div className="flex items-center gap-4">
-        <button onClick={handleGetStarted} className="text-gray-300 hover:text-white font-medium transition">
-          Login
-        </button>
-        <button onClick={handleGetStarted} className="bg-primary hover:bg-[#2563eb] text-white px-5 py-2 rounded-full font-medium transition">
-          Get Started
-        </button>
+        {!isAuthenticated ? (
+          <>
+            <Link to="/login" className="mr-4 text-sm text-white">Sign in</Link>
+            <Link to="/signup" className="text-sm bg-[#3b82f6] px-3 py-1 rounded text-white">Sign up</Link>
+          </>
+        ) : (
+          <div className="font-poppins text-sm text-white">Hi, {user?.fullname}</div>
+        )}
       </div>
     </nav>
   );

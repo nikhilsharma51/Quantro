@@ -1,6 +1,7 @@
 import React from "react";
 import heroImg from "../assets/SJ_screenshot_V5.jpg"; // Replace with your actual image file
 import { Navigate, useNavigate } from "react-router-dom";
+import { useAuth } from "../context/AuthContext";
 
 
 const testimonials = [
@@ -41,10 +42,13 @@ const faqs = [
 ];
 
 const Landing = () => {
-  
+   const { isAuthenticated, user } = useAuth();
   const navigateToLogin = useNavigate();
   const handleGetStarted = () => {
-    navigateToLogin("/login");
+    if(isAuthenticated){
+      return navigateToLogin("/dashboard");
+    }else{
+    navigateToLogin("/login");}
   };
 
   return (

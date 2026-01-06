@@ -1,0 +1,59 @@
+const TradesSummaryRow = ({ metrics }) => {
+  const positive = Number(metrics.pnl) >= 0;
+
+  return (
+    <div className="bg-[#111827] rounded-xl overflow-hidden mb-4 mt-4">
+      <div className="grid grid-cols-9 text-xs text-gray-400 border-b border-gray-700">
+        {[
+          "DATE",
+          "SYMBOL",
+          "QTY",
+          "ENTRY",
+          "EXIT",
+          "ENTRY TOT",
+          "EXIT TOT",
+          "RETURN",
+          "RETURN %"
+        ].map((h) => (
+          <div key={h} className="px-3 py-2">
+            {h}
+          </div>
+        ))}
+      </div>
+
+      <div className="grid grid-cols-9 text-sm">
+        <div className="px-3 py-3 text-gray-500"></div>
+        <div className="px-3 py-3 text-gray-500"></div>
+        <div className="px-3 py-3 text-gray-500"></div>
+        <div className="px-3 py-3 text-gray-500"></div>
+        <div className="px-3 py-3 text-gray-500"></div>
+
+        <div className="px-3 py-3">
+          ${metrics.entryTotal}
+        </div>
+
+        <div className="px-3 py-3">
+          ${metrics.exitTotal}
+        </div>
+
+        <div
+          className={`px-3 py-3 font-medium ${
+            positive ? "text-emerald-400" : "text-rose-400"
+          }`}
+        >
+          {positive ? "+" : "-"}${Math.abs(metrics.pnl)}
+        </div>
+
+        <div
+          className={`px-3 py-3 font-medium ${
+            positive ? "text-emerald-400" : "text-rose-400"
+          }`}
+        >
+          {metrics.returnPercent}%
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default TradesSummaryRow;

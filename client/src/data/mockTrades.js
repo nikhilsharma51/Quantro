@@ -1,0 +1,29 @@
+export const mockTrades = [
+  {
+    id: 1,
+    symbol: "PLTR",
+    side: "LONG",
+    qty: 50,
+    entry: 10.8,
+    exit: 11.8,
+    date: "2022-03-11",
+  },
+  {
+    id: 2,
+    symbol: "BROS",
+    side: "LONG",
+    qty: 50,
+    entry: 44.16,
+    exit: 49.0,
+    date: "2022-03-10",
+  },
+  {
+    id: 3,
+    symbol: "PLTR",
+    side: "LONG",
+    qty: 200,
+    entry: 26.89,
+    exit: 25.9,
+    date: "2021-11-09",
+  },
+];

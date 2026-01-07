@@ -1,8 +1,14 @@
+import React from "react";
+import useTradeStore from "../../store/useTradeStore";
+
 const TradesTable = ({ trades }) => {
+
+  const openTrade = useTradeStore((s) => s.openTrade);
+  
   return (
     <div className="bg-[#111827] rounded-xl overflow-hidden">
       <div className="grid grid-cols-9 text-xs text-gray-400 border-b border-gray-700">
-        {[
+        {[ 
           "DATE",
           "SYMBOL",
           "QTY",
@@ -29,7 +35,8 @@ const TradesTable = ({ trades }) => {
         return (
           <div
             key={t.id}
-            className="grid grid-cols-9 text-sm border-b border-gray-800 hover:bg-[#020617]"
+            onClick={() => openTrade(t)}
+            className="grid grid-cols-9 text-sm border-b border-gray-800 hover:bg-[#020617] cursor-pointer"
           >
             <div className="px-3 py-2">{t.date}</div>
             <div className="px-3 py-2">{t.symbol}</div>
@@ -39,16 +46,12 @@ const TradesTable = ({ trades }) => {
             <div className="px-3 py-2">${entryTot.toFixed(2)}</div>
             <div className="px-3 py-2">${exitTot.toFixed(2)}</div>
             <div
-              className={`px-3 py-2 font-medium ${
-                positive ? "text-emerald-400" : "text-rose-400"
-              }`}
+              className={`px-3 py-2 font-medium ${positive ? "text-emerald-400" : "text-rose-400"}`}
             >
               {positive ? "+" : "-"}${Math.abs(pnl).toFixed(2)}
             </div>
             <div
-              className={`px-3 py-2 font-medium ${
-                positive ? "text-emerald-400" : "text-rose-400"
-              }`}
+              className={`px-3 py-2 font-medium ${positive ? "text-emerald-400" : "text-rose-400"}`}
             >
               {retPct}%
             </div>

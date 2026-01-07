@@ -5,6 +5,7 @@ import StatsCards from './dashboard/StatsCards';
 import PnLCard from './dashboard/PnLCard';
 import TradesTable from './dashboard/TradesTable';
 import TradesSummaryRow from './dashboard/TradesSummaryRow';
+import TradeModal from './dashboard/TradeModal';
 
 import { mockTrades } from '../data/mockTrades';
 import { calculateTradeMetrics } from '../utils/tradeCalculations';
@@ -34,6 +35,9 @@ const MainContent = () => {
 
       {/* DETAILED TRADES */}
       <TradesTable trades={mockTrades} />
+
+      <TradeModal />
+
     </main>
   );
 };

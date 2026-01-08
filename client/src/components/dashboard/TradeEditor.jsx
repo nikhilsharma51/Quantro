@@ -37,6 +37,15 @@ const TradeEditor = ({ trade }) => {
           onChange={(e) => handleChange("exit", e.target.value)}
           placeholder="Exit Price"
         />
+        <input
+          className="bg-[#020617] p-2 rounded"
+          type='number'
+          
+          
+          value = {formData.qty}
+          placeholder='Quantity'
+          onChange={(e)=> handleChange("qty" , e.target.value)}
+        />
       </div>
 
        <button

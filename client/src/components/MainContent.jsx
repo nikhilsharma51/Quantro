@@ -9,9 +9,12 @@ import TradeModal from './dashboard/TradeModal';
 
 import { mockTrades } from '../data/mockTrades';
 import { calculateTradeMetrics } from '../utils/tradeCalculations';
+import useTradeStore from '../store/useTradeStore';
 
 const MainContent = () => {
-  const metrics = calculateTradeMetrics(mockTrades);
+  const {trades} = useTradeStore(); 
+  
+  const metrics = calculateTradeMetrics(trades);
 
   return (
     <main className="p-6 overflow-y-auto text-white">
@@ -21,7 +24,7 @@ const MainContent = () => {
       {/* Top section */}
       <div className="flex gap-4">
         {/* Chart */}
-        <EquityChart trades = {mockTrades} />
+        <EquityChart trades = {trades} />
 
         {/* Right side cards */}
         <div className="flex flex-col gap-4 w-[280px]">
@@ -34,7 +37,7 @@ const MainContent = () => {
       <TradesSummaryRow metrics={metrics} />
 
       {/* DETAILED TRADES */}
-      <TradesTable trades={mockTrades} />
+      <TradesTable trades={trades} />
 
       <TradeModal />
 

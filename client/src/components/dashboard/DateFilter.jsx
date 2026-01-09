@@ -15,21 +15,24 @@ const DateFilter = () => {
   const [active, setActive] = useState("Today");
   
   return (
-    <div className="flex flex-wrap gap-2 mb-6">
-      {filters.map((filter) => (
-        <button
-          key={filter}
-          onClick={() => setActive(filter)}
-          className={`px-3 py-1.5 rounded-full text-sm transition
-            ${
+    <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 mb-6">
+      <div className="flex flex-wrap gap-2">
+        {filters.map((filter) => (
+          <button
+            key={filter}
+            onClick={() => setActive(filter)}
+            className={`px-3 py-1.5 rounded-full text-sm font-medium transition-transform duration-150 ease-in-out transform ${
               active === filter
-                ? "bg-blue-500 text-white"
-                : "bg-[#1f2937] text-gray-400 hover:bg-[#374151]"
+                ? 'bg-gradient-to-r from-blue-500 to-cyan-400 text-white shadow-md'
+                : 'bg-[#1f2937] text-gray-400 hover:bg-[#374151] hover:scale-105'
             }`}
-        >
-          {filter}
-        </button>
-      ))}
+          >
+            {filter}
+          </button>
+        ))}
+      </div>
+
+      {/* kept simple preset buttons only to preserve existing behavior */}
     </div>
   );
 };

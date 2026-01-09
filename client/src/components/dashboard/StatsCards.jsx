@@ -1,11 +1,9 @@
 const StatCard = ({ label, value, color }) => (
-  <div className="bg-[#111827] rounded-xl px-4 py-3">
-    <p className="text-xs text-gray-400 tracking-wide">{label}</p>
+  <div className="bg-[#0b1220] border border-gray-800 rounded-xl px-4 py-3 hover:shadow-lg transform hover:-translate-y-0.5 transition">
+    <p className="text-xs text-gray-400 tracking-wide font-medium">{label}</p>
     <p
-      className={`text-xl font-semibold ${
-        color === "green"
-          ? "text-emerald-400"
-          : "text-rose-400"
+      className={`text-2xl font-bold mt-1 ${
+        color === 'green' ? 'text-emerald-400' : 'text-rose-400'
       }`}
     >
       {value}

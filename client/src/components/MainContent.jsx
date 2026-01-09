@@ -17,17 +17,17 @@ const MainContent = () => {
   const metrics = calculateTradeMetrics(trades);
 
   return (
-    <main className="p-6 overflow-y-auto text-white">
+    <main className="p-8 overflow-y-auto text-white font-sans space-y-6">
       {/* Date Filters */}
       <DateFilter />
 
       {/* Top section */}
-      <div className="flex gap-4">
+      <div className="flex gap-4 items-start">
         {/* Chart */}
         <EquityChart trades = {trades} />
 
         {/* Right side cards */}
-        <div className="flex flex-col gap-4 w-[280px]">
+        <div className="flex flex-col gap-4 w-[320px]">
           <StatsCards metrics = {metrics} />
           <PnLCard metrics = {metrics} />
         </div>

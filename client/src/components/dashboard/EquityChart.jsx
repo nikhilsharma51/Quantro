@@ -1,4 +1,8 @@
+import useFilterStore from "../../store/useFilterStore";
+
 const EquityChart = () => {
+  const trades = useFilterStore((s) => s.filteredTrades);
+
   return (
     <div className="bg-gradient-to-b from-[#0b1220] to-[#0f1724] rounded-xl p-5 flex-1 min-h-[200px] relative shadow-inner">
       <div className="flex items-center justify-between">

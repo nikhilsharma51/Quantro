@@ -1,4 +1,6 @@
 import { useEffect, useState } from "react";
+import useFilterStore from "../../store/useFilterStore";
+
 const filters = [
   "Today",
   "Yesterday",
@@ -9,10 +11,14 @@ const filters = [
   "Last 3 mo.",
   "This yr.",
   "Last yr.",
+  "All time",
 ];
 
 const DateFilter = () => {
-  const [active, setActive] = useState("Today");
+  const active = useFilterStore((state)=> state.activeFilter);
+  const setFilter = useFilterStore((state)=> state.setFilter);
+
+  // const [active, setActive] = useState("Today");
   
   return (
     <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 mb-6">
@@ -20,7 +26,7 @@ const DateFilter = () => {
         {filters.map((filter) => (
           <button
             key={filter}
-            onClick={() => setActive(filter)}
+            onClick={() => setFilter(filter)}
             className={`px-3 py-1.5 rounded-full text-sm font-medium transition-transform duration-150 ease-in-out transform ${
               active === filter
                 ? 'bg-gradient-to-r from-blue-500 to-cyan-400 text-white shadow-md'

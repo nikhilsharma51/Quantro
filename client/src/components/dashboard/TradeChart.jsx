@@ -8,6 +8,8 @@ import {
   ResponsiveContainer,
 } from "recharts";
 
+import useFilterStore from "../../store/useFilterStore";
+
 const dummyData = [
   { time: "10:00", price: 10.5 },
   { time: "10:30", price: 10.8 },
@@ -15,7 +17,12 @@ const dummyData = [
   { time: "11:30", price: 11.8 },
 ];
 
-const TradeChart = ({ trade }) => {
+const TradeChart = () => {
+  const trades = useFilterStore((s) => s.filteredTrades);
+  
+  const trade = Array.isArray(trades) && trades.length ? trades[0] : null;
+
+
   return (
     <div className="bg-[#111827] rounded-xl p-4 h-[300px]">
       <ResponsiveContainer width="100%" height="100%">

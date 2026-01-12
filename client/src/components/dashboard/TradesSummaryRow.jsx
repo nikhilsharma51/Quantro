@@ -1,5 +1,8 @@
-const TradesSummaryRow = ({ metrics }) => {
-  const positive = Number(metrics.pnl) >= 0;
+import useFilterStore from "../../store/useFilterStore";
+
+const TradesSummaryRow = () => {
+  const { wins, losses, avgWin, avgLoss, totalPnl } = useFilterStore((s) => s.stats);
+  const positive = Number(totalPnl) >= 0;
 
   return (
     <div className="bg-[#0b1220] rounded-xl overflow-hidden mb-4 mt-4 border border-gray-800 shadow-sm">
@@ -27,16 +30,16 @@ const TradesSummaryRow = ({ metrics }) => {
         <div className="px-3 py-3 text-gray-500"></div>
         <div className="px-3 py-3 text-gray-500"></div>
 
-        <div className="px-3 py-3 text-gray-200 font-medium">${metrics.entryTotal}</div>
+        <div className="px-3 py-3 text-gray-200 font-medium">${avgWin}</div>
 
-        <div className="px-3 py-3 text-gray-200 font-medium">${metrics.exitTotal}</div>
+        <div className="px-3 py-3 text-gray-200 font-medium">${avgLoss}</div>
 
         <div className={`px-3 py-3 font-medium ${positive ? 'text-emerald-400' : 'text-rose-400'}`}>
-          {positive ? '+' : '-'}${Math.abs(metrics.pnl)}
+          {positive ? '+' : '-'}${Math.abs(totalPnl)}
         </div>
 
         <div className={`px-3 py-3 font-medium ${positive ? 'text-emerald-400' : 'text-rose-400'}`}>
-          {metrics.returnPercent}%
+          {((totalPnl / Math.abs(avgLoss)) * 100).toFixed(2)}%
         </div>
       </div>
     </div>

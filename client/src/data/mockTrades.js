@@ -26,4 +26,13 @@ export const mockTrades = [
     exit: 25.9,
     date: "2021-11-09",
   },
+  {
+    id: 4,
+    symbol: "TATA",
+    side: "LONG",
+    qty: 150,
+    entry: 30.64,
+    exit: 50.34,
+    date: "2026-01-11",
+  },
 ];

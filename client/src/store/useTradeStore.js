@@ -1,6 +1,7 @@
 import {create} from 'zustand';
 import { mockTrades } from '../data/mockTrades';
 
+
 const useTradeStore = create((set)=>({
     trades : mockTrades,
     selectedTrade : null,

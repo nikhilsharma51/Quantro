@@ -1,7 +1,7 @@
-import useFilterStore from "../../store/useFilterStore";
+import useAppStore from "../../store/useAppStore";
 
 const PnLCard = () => {
-  const { totalPnl, wins, losses } = useFilterStore((s) => s.stats);
+  const { totalPnl, wins, losses } = useAppStore((s) => s.stats);
   const pnl = Number(totalPnl) || 0;
   const isPositive = pnl >= 0;
 

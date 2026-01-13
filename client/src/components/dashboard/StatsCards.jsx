@@ -1,4 +1,4 @@
-import useFilterStore from "../../store/useFilterStore";
+import useAppStore from "../../store/useAppStore";
 
 const StatCard = ({ label, value, color }) => (
   <div className="bg-[#0b1220] border border-gray-800 rounded-xl px-4 py-3 hover:shadow-lg transform hover:-translate-y-0.5 transition">
@@ -14,7 +14,7 @@ const StatCard = ({ label, value, color }) => (
 );
 
 const StatsCards = () => {
-  const stats = useFilterStore((s) => s.stats);
+  const stats = useAppStore((s) => s.stats);
 
   return (
     <div className="grid grid-cols-2 gap-3">

@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import useFilterStore from "../../store/useFilterStore";
+import useAppStore from "../../store/useAppStore";
 
 const filters = [
   "Today",
@@ -15,8 +15,8 @@ const filters = [
 ];
 
 const DateFilter = () => {
-  const active = useFilterStore((state)=> state.activeFilter);
-  const setFilter = useFilterStore((state)=> state.setFilter);
+  const active = useAppStore((state)=> state.activeFilter);
+  const setFilter = useAppStore((state)=> state.setFilter);
 
   // const [active, setActive] = useState("Today");
   

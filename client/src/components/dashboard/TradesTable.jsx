@@ -1,10 +1,10 @@
 import React from "react";
 import useTradeStore from "../../store/useTradeStore";
-import useFilterStore from "../../store/useFilterStore";
+import useAppStore from "../../store/useAppStore";
 
 const TradesTable = () => {
-  const openTrade = useTradeStore((s) => s.openTrade);
-  const trades = useFilterStore((s) => s.filteredTrades);
+  const openTrade = useAppStore((s) => s.openTrade);
+  const trades = useAppStore((s) => s.filteredTrades);
 
   return (
     <div className="bg-[#0b1220] rounded-xl overflow-hidden shadow-sm border border-gray-800">

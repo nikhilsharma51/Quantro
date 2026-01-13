@@ -1,4 +1,4 @@
-import useTradeStore from "../../store/useTradeStore";
+import useAppStore from "../../store/useAppStore";
 import TradeChart from "./TradeChart";
 import TradeEditor from "./TradeEditor";
 
@@ -9,7 +9,7 @@ const TradeModal = () => {
     isEditMode,
     closeModal,
     enableEdit,
-  } = useTradeStore();
+  } = useAppStore();
 
   if (!isModalOpen || !selectedTrade) return null;
 

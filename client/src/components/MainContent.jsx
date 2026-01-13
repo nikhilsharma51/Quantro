@@ -9,10 +9,10 @@ import TradeModal from './dashboard/TradeModal';
 
 import { mockTrades } from '../data/mockTrades';
 import { calculateTradeMetrics } from '../utils/tradeCalculations';
-import useTradeStore from '../store/useTradeStore';
+import useAppStore from '../store/useAppStore';
 
 const MainContent = () => {
-  const {trades} = useTradeStore(); 
+  const {trades} = useAppStore(); 
   
   const metrics = calculateTradeMetrics(trades);
 

@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
-import useTradeStore from '../../store/useTradeStore';
+import useAppStore from '../../store/useAppStore';
 
 
 const TradeEditor = ({ trade }) => {
-  const updateTrade = useTradeStore((s) => s.updateTrade);
+  const updateTrade = useAppStore((s) => s.updateTrade);
 
   const [formData , setFormData] = useState({
     ...trade

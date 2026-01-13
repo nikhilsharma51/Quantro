@@ -1,7 +1,7 @@
-import useFilterStore from "../../store/useFilterStore";
+import useAppStore from "../../store/useAppStore";
 
 const TradesSummaryRow = () => {
-  const { wins, losses, avgWin, avgLoss, totalPnl } = useFilterStore((s) => s.stats);
+  const { wins, losses, avgWin, avgLoss, totalPnl } = useAppStore((s) => s.stats);
   const positive = Number(totalPnl) >= 0;
 
   return (

@@ -8,7 +8,7 @@ import {
   ResponsiveContainer,
 } from "recharts";
 
-import useFilterStore from "../../store/useFilterStore";
+import useAppStore from "../../store/useAppStore";
 
 const dummyData = [
   { time: "10:00", price: 10.5 },
@@ -18,7 +18,7 @@ const dummyData = [
 ];
 
 const TradeChart = () => {
-  const trades = useFilterStore((s) => s.filteredTrades);
+  const trades = useAppStore((s) => s.filteredTrades);
   
   const trade = Array.isArray(trades) && trades.length ? trades[0] : null;
 

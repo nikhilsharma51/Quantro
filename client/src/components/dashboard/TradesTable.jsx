@@ -1,5 +1,5 @@
 import React from "react";
-import useTradeStore from "../../store/useTradeStore";
+
 import useAppStore from "../../store/useAppStore";
 
 const TradesTable = () => {

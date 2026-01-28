@@ -1,6 +1,6 @@
 import jwt from "jsonwebtoken";
 
-export const protect = (req, res, next) => {
+const protect = (req, res, next) => {
   try {
     // Try cookie first, then Authorization header
     const token = req.cookies?.token || req.headers.authorization?.split(" ")[1];
@@ -13,3 +13,5 @@ export const protect = (req, res, next) => {
     return res.status(401).json({ message: "Token invalid or expired" });
   }
 };
+
+export default protect;

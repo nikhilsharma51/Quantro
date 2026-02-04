@@ -10,6 +10,9 @@ import { connectPostgres } from "./config/Postgres.js";
 configDotenv();
 const app = express();
 
+// console.log("PG USER:", process.env.POSTGRES_USER);
+
+
 // core middleware
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -27,7 +30,12 @@ const startServer = async () => {
   try {
     await DBconnect();
 
-    await connectPostgres();
+    // Optional: Connect to PostgreSQL (comment out if not needed)
+    try {
+      await connectPostgres();
+    } catch (pgError) {
+      console.warn("⚠️  PostgreSQL not available, continuing without it");
+    }
 
     // routes
     app.use("/api/auth", authRoutes);
